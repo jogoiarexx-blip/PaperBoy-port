@@ -1,0 +1,5 @@
+@import "../app/globals.css";
+
+/* O app e os componentes originais ficam um nível acima deste frontend. */
+@source "../app";
+@source "../components";
