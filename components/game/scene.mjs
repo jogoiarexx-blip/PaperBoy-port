@@ -17,6 +17,11 @@ import {ChaseCameraRig,CAMERA_REVISION} from './chase-camera.mjs';
 import {WalkController} from './walk-controller.mjs';
 
 const world=(p, target)=>target.set(p.x,p.y??ground(p.z),-p.z);
+
+// Com base no GitHub Pages, arquivos absolutos precisam do prefixo /PaperBoy-port.
+// O frontend estático define o prefixo antes da importação dinâmica desta cena.
+// No ambiente original, o prefixo permanece vazio.
+const assetURL=path=>`${(globalThis.__PAPERROUTE_BASE__||'').replace(/\\/$/,'')}${path}`;
 export async function createGame(canvas,onUpdate,onLoad){
   const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,preserveDrawingBuffer:true,powerPreference:'high-performance'});
   renderer.setPixelRatio(Math.min(window.devicePixelRatio,1.25)); // Ultra-stable 60 FPS optimization for mobile/console
@@ -24,7 +29,7 @@ export async function createGame(canvas,onUpdate,onLoad){
   const shaderErrors=[];renderer.debug.onShaderError=(gl,program,vertex,fragment)=>shaderErrors.push({program:gl.getProgramInfoLog(program),vertex:gl.getShaderInfoLog(vertex),fragment:gl.getShaderInfoLog(fragment)});
   function ensureWebGLFrame(){if(renderer.getContext().isContextLost())throw Error('The graphics context was lost. Reload before capturing.');if(shaderErrors.length)throw Error('WebGL shader compilation failed; this frame cannot be accepted.');}
   const scene=new THREE.Scene();scene.fog=new THREE.Fog(STYLE.fog.color,STYLE.fog.near,STYLE.fog.far);
-  const skyLoading=new THREE.TextureLoader().loadAsync(STYLE.sky);
+  const skyLoading=new THREE.TextureLoader().loadAsync(assetURL(STYLE.sky));
   const camera=new THREE.PerspectiveCamera(68,1,.1,1500);const sim=new Simulation(),clock=new FixedStepper(sim),pointer=new PointerIntent();
   const loader=new GLTFLoader();
   const dracoLoader=new DRACOLoader();
@@ -34,13 +39,13 @@ export async function createGame(canvas,onUpdate,onLoad){
   const audioListener = new THREE.AudioListener(); camera.add(audioListener);
   const audioLoader = new THREE.AudioLoader();
   const bgmAudio = new THREE.Audio(audioListener);
-  const bgmLoading = audioLoader.loadAsync('/assets/audio/bgm.mp3').then(b => { bgmAudio.setBuffer(b); bgmAudio.setLoop(true); bgmAudio.setVolume(0.06); }).catch(()=>null);
+  const bgmLoading = audioLoader.loadAsync(assetURL('/assets/audio/bgm.wav')).then(b => { bgmAudio.setBuffer(b); bgmAudio.setLoop(true); bgmAudio.setVolume(0.06); }).catch(()=>null);
   let audioContextStarted = false;
 
-  const manifest=await fetch('/assets/manifest.json').then(r=>{if(!r.ok)throw Error('Asset manifest unavailable');return r.json();});
+  const manifest=await fetch(assetURL('/assets/manifest.json')).then(r=>{if(!r.ok)throw Error('Asset manifest unavailable');return r.json();});
   const assets=new Map();let loaded=0;
   await Promise.all(manifest.assets.map(async entry=>{
-      const gltf=await loader.loadAsync('/assets/'+entry.file);
+      const gltf=await loader.loadAsync(assetURL('/assets/'+entry.file));
       if (gltf.animations && gltf.animations.length) gltf.scene.userData.animations = gltf.animations;
       assets.set(entry.id,gltf.scene);
       onLoad(++loaded/manifest.assets.length); 
