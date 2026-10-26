@@ -51,6 +51,8 @@ jobs:
               assert (Path('public/assets') / asset['file']).is_file(), asset['id']
           print(f"PUBLICAÇÃO: {len(assets)} modelos disponíveis")
           PY
+      - name: Gerar trilha sonora
+        run: python scripts/pages-generate-audio.py
       - name: Instalar frontend estático
         run: |
           npm --prefix pages-site install --no-audit --no-fund
