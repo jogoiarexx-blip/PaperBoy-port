@@ -1,0 +1,8 @@
+import {NPC_STATES} from '../engine/living-world.mjs';
+import test from 'node:test';import assert from 'node:assert/strict';import fs from 'node:fs';import crypto from 'node:crypto';import {ANIMATIONS} from '../engine/animation.mjs';
+test('every asset and animation has current front, side, rear and clay captures',()=>{
+ const manifest=JSON.parse(fs.readFileSync(new URL('../public/assets/manifest.json',import.meta.url))),review=JSON.parse(fs.readFileSync(new URL('../public/review/manifest.json',import.meta.url)));
+ const hash=crypto.createHash('sha256').update(JSON.stringify(manifest)).update(fs.readFileSync(new URL('../engine/animation.mjs',import.meta.url))).update(fs.readFileSync(new URL('../engine/living-world.mjs',import.meta.url))).update(fs.readFileSync(new URL('../components/game/npc-view.mjs',import.meta.url))).digest('hex');assert.equal(review.checksum,hash,'Recapture after an asset or animation change.');
+ for(const a of manifest.assets)for(const animation of a.id==='rider'?ANIMATIONS:a.id.startsWith('npc_')?NPC_STATES:['riding'])for(const view of ['front','side','rear','clay']){const c=review.captures.find(c=>c.asset===a.id&&c.animation===animation&&c.view===view);assert.ok(c,`${a.id} ${animation} ${view}`);const png=fs.readFileSync(new URL('../public/review/'+c.file,import.meta.url));assert.equal(png.toString('hex',0,8),'89504e470d0a1a0a');assert.equal(png.readUInt32BE(16),600);assert.equal(png.readUInt32BE(20),600);}
+ assert.equal(review.captures.length,manifest.assets.reduce((n,a)=>n+4*(a.id==='rider'?ANIMATIONS.length:a.id.startsWith('npc_')?NPC_STATES.length:1),0));
+});

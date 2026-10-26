@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {ANIMATIONS,poseAt} from '../engine/animation.mjs';
+test('all animation turnarounds have deterministic finite poses',()=>{for(const mode of ANIMATIONS)for(const t of [0,.18,.35,.7,1.1]){assert.deepEqual(poseAt(mode,t),poseAt(mode,t));assert.ok(Object.values(poseAt(mode,t)).every(Number.isFinite));}});
+test('steering mirrors and neutral riding centers; sprint pedals faster',()=>{assert.equal(poseAt('steering',.2,-1).lean,-poseAt('steering',.2,1).lean);assert.equal(poseAt('riding',.2).lean,0);assert.ok(poseAt('sprinting',1).wheel>poseAt('riding',1).wheel);});
+test('throw arm returns to handlebar and fall recovers upright',()=>{assert.ok(poseAt('throwing',.25).rightArm<-2);assert.ok(Math.abs(poseAt('throwing',.5).rightArm)<1e-10);assert.ok(poseAt('falling',.55).fall>1);assert.ok(Math.abs(poseAt('falling',1.1).fall)<1e-10);});
