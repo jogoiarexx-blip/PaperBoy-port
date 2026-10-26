@@ -1,0 +1,15 @@
+{
+  "id": "summer-sky-v2",
+  "role": "Sky-only backdrop texture; not a gameplay screenshot or a WebGL render.",
+  "creation": "One built-in image generation call, then WebP format conversion with sharp at quality 90.",
+  "dimensions": [
+    1774,
+    887
+  ],
+  "source": "art/textures/summer-sky-source.png",
+  "webAsset": "public/textures/summer-sky-v2.webp",
+  "sourceSha256": "27baeca9ce2b532006b512b92d74ae0d080c2c8d9eae688969120f41370e34a0",
+  "webAssetSha256": "40dfcbcb1547ddf72a9ba9fe9d76148f0b2f6f8d8437c9d1173ad7788f5b5b65",
+  "webAssetBytes": 241336,
+  "generationBrief": "Wide 2:1 sky-only painted panorama for PAPERROUTE. Saturated deep cobalt and azure upper sky fading through cyan into pale warm ivory horizon haze. Massive luminous white cumulonimbus with rounded voluminous lobes, soaring cloud towers toward the upper right, clouds at both sides and ample blue gaps. Nostalgic Japanese summer animation background, hand-painted gouache, delicate brush texture. Radiant daylight, lavender-blue cloud undersides, cream sunlit contours. Lowest 15 percent nearly clear pale warm haze. No land, ocean, buildings, people, birds, vehicles, objects, sun disc, text, logos, UI or watermark. Not photorealistic."
+}
