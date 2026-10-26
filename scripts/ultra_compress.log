@@ -1,0 +1,172 @@
+Optimizing horse.glb...
+❯ dedup
+✔ dedup                55ms
+❯ instance
+warn: instance: Instancing is not currently supported for animated models.
+✔ instance             0ms
+❯ palette
+✔ palette              0ms
+❯ flatten
+✔ flatten              4ms
+❯ join
+✔ join                 4ms
+❯ weld
+✔ weld                 23ms
+❯ simplify
+✔ simplify             34ms
+❯ resample
+✔ resample             250ms
+❯ prune
+✔ prune                49ms
+❯ sparse
+✔ sparse               8ms
+❯ textureCompress
+✔ textureCompress      235ms
+❯ draco
+✔ draco                23ms
+
+info: horse.glb (27.31 MB) → horse.glb.new (3.24 MB)
+horse.glb optimized successfully!
+Optimizing house_start.glb...
+❯ dedup
+✔ dedup                2ms
+❯ instance
+✔ instance             0ms
+❯ palette
+✔ palette              0ms
+❯ flatten
+✔ flatten              1ms
+❯ join
+✔ join                 8ms
+❯ weld
+✔ weld                 14ms
+❯ simplify
+✔ simplify             19ms
+❯ resample
+✔ resample             0ms
+❯ prune
+✔ prune                46ms
+❯ sparse
+✔ sparse               6ms
+❯ textureCompress
+✔ textureCompress      135ms
+❯ draco
+✔ draco                12ms
+
+info: house_start.glb (3.46 MB) → house_start.glb.new (282.17 KB)
+house_start.glb optimized successfully!
+Optimizing tree_green.glb...
+warn: Decoded KHR_draco_mesh_compression. Further compression will be lossy.
+❯ dedup
+✔ dedup                3ms
+❯ instance
+✔ instance             0ms
+❯ palette
+✔ palette              0ms
+❯ flatten
+✔ flatten              1ms
+❯ join
+✔ join                 11ms
+❯ weld
+✔ weld                 20ms
+❯ simplify
+✔ simplify             18ms
+❯ resample
+✔ resample             0ms
+❯ prune
+✔ prune                24ms
+❯ sparse
+✔ sparse               10ms
+❯ textureCompress
+✔ textureCompress      125ms
+❯ draco
+✔ draco                24ms
+
+info: tree_green.glb (5.4 MB) → tree_green.glb.new (863.19 KB)
+tree_green.glb optimized successfully!
+Optimizing tree_pink.glb...
+warn: Decoded KHR_draco_mesh_compression. Further compression will be lossy.
+❯ dedup
+✔ dedup                1ms
+❯ instance
+✔ instance             0ms
+❯ palette
+✔ palette              0ms
+❯ flatten
+✔ flatten              1ms
+❯ join
+✔ join                 102ms
+❯ weld
+✔ weld                 77ms
+❯ simplify
+✔ simplify             139ms
+❯ resample
+✔ resample             0ms
+❯ prune
+✔ prune                78ms
+❯ sparse
+✔ sparse               31ms
+❯ textureCompress
+✔ textureCompress      175ms
+❯ draco
+✔ draco                66ms
+
+info: tree_pink.glb (4.54 MB) → tree_pink.glb.new (1.17 MB)
+tree_pink.glb optimized successfully!
+Optimizing tree_yellow.glb...
+warn: Decoded KHR_draco_mesh_compression. Further compression will be lossy.
+❯ dedup
+✔ dedup                3ms
+❯ instance
+✔ instance             0ms
+❯ palette
+✔ palette              0ms
+❯ flatten
+✔ flatten              1ms
+❯ join
+✔ join                 10ms
+❯ weld
+✔ weld                 14ms
+❯ simplify
+✔ simplify             23ms
+❯ resample
+✔ resample             0ms
+❯ prune
+✔ prune                25ms
+❯ sparse
+✔ sparse               8ms
+❯ textureCompress
+✔ textureCompress      120ms
+❯ draco
+✔ draco                15ms
+
+info: tree_yellow.glb (4.31 MB) → tree_yellow.glb.new (635.07 KB)
+tree_yellow.glb optimized successfully!
+Optimizing lantern.glb...
+❯ dedup
+✔ dedup                2ms
+❯ instance
+✔ instance             0ms
+❯ palette
+✔ palette              0ms
+❯ flatten
+✔ flatten              1ms
+❯ join
+✔ join                 3ms
+❯ weld
+✔ weld                 2ms
+❯ simplify
+✔ simplify             3ms
+❯ resample
+✔ resample             0ms
+❯ prune
+✔ prune                28ms
+❯ sparse
+✔ sparse               1ms
+❯ textureCompress
+✔ textureCompress      108ms
+❯ draco
+✔ draco                2ms
+
+info: lantern.glb (2.55 MB) → lantern.glb.new (58.96 KB)
+lantern.glb optimized successfully!
