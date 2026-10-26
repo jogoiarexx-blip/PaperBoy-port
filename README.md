@@ -280,3 +280,11 @@ for the wrap direction; [Web Japan](https://web-japan.org/trends/11_fashion/fas1
 for lightweight cotton summer yukata; [Anything, the maekake maker](https://anything.ne.jp/)
 for the indigo waist apron. These guide garment features, not claims about every
 Japanese resident's clothing.
+
+
+## Jogar pelo GitHub Pages
+
+Uma versão estática do mesmo motor Three.js está configurada em `pages-site/` e publicada por `.github/workflows/pages.yml`. O workflow recria os 42 assets GLB a partir dos geradores Blender da pasta `art/` antes do build, pois `public/assets/` não está no repositório.
+
+Acesso após a primeira publicação: **https://jogoiarexx-blip.github.io/PaperBoy-port/**.
+Se necessário, habilite uma única vez em **Settings → Pages → Source: GitHub Actions**. Acompanhe os builds na aba **Actions**.
