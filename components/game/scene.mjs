@@ -21,7 +21,7 @@ const world=(p, target)=>target.set(p.x,p.y??ground(p.z),-p.z);
 // Com base no GitHub Pages, arquivos absolutos precisam do prefixo /PaperBoy-port.
 // O frontend estático define o prefixo antes da importação dinâmica desta cena.
 // No ambiente original, o prefixo permanece vazio.
-const assetURL=path=>`${(globalThis.__PAPERROUTE_BASE__||'').replace(/\\/$/,'')}${path}`;
+const assetURL=path=>`${globalThis.__PAPERROUTE_BASE__||''}${path}`;
 export async function createGame(canvas,onUpdate,onLoad){
   const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,preserveDrawingBuffer:true,powerPreference:'high-performance'});
   renderer.setPixelRatio(Math.min(window.devicePixelRatio,1.25)); // Ultra-stable 60 FPS optimization for mobile/console
